@@ -76,9 +76,34 @@ public class RankingTest {
 
     @Test
     public void canFindIndexByName(){
-        String details = ranking.findIndexByName("Jaws II");
-        assertEquals("Index: 4, Title: Jaws II, Genre:  Thriller, Ranking: 5", details);
+        ranking.sortList();
+        int details = ranking.findIndexByName("Jaws II");
+        assertEquals(4, details);
     }
+
+    @Test
+    public void canMoveTitleUpOnePlace(){
+        ranking.sortList();
+        int details = ranking.findIndexByName("Jaws II");
+        assertEquals(4, details);
+        ranking.moveTitleUpRanking("Jaws II");
+        int details1 = ranking.findIndexByName("Jaws II");
+        assertEquals(3, details1);
+    }
+
+    @Test
+    public void canMoveTitleDownOnePlace(){
+        ranking.sortList();
+        int details = ranking.findIndexByName("Jaws II");
+        assertEquals(4, details);
+        ranking.moveTitleDownRanking("Jaws II");
+        int details1 = ranking.findIndexByName("Jaws II");
+        assertEquals(5, details1);
+    }
+
+
+
+
 
 
 }

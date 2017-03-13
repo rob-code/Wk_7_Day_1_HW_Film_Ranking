@@ -36,15 +36,37 @@ public class Ranking {
         Collections.sort(movies);
     }
 
-    public String findIndexByName(String name){
+    public int findIndexByName(String name){
         for(Movie m : movies){
             if (name == m.getTitle()){
                 String info = "Index: " + movies.indexOf(m) + ", " + m.toString();
-                return info;
+                return movies.indexOf(m);
             }
         }
-        return "not found";
+        return -10;
     }
+
+    public void moveTitleUpRanking(String title){
+        int pos = this.findIndexByName(title);
+            if (pos != 0) {
+                Collections.swap(movies, pos, pos - 1);
+            }
+        for (int i=0; i < this.movies.size(); i++){
+           movies.get(i).setCurrentRanking(i+1);
+        }
+    }
+
+    public void moveTitleDownRanking(String title){
+        int pos = this.findIndexByName(title);
+        if (pos != 9) {
+            Collections.swap(movies, pos, pos + 1);
+        }
+        for (int i=0; i < this.movies.size(); i++){
+            movies.get(i).setCurrentRanking(i+1);
+        }
+    }
+
+
 
 
 }
