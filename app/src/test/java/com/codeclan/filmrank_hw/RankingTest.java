@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.ArrayList;
 
-
 public class RankingTest {
 
     ArrayList<Movie> movies;
@@ -18,6 +17,7 @@ public class RankingTest {
     Movie movie8;
     Movie movie9;
     Movie movie10;
+    Movie moviexx;
     Ranking ranking;
 
     @Before
@@ -34,29 +34,47 @@ public class RankingTest {
         movie10 = new Movie("Rocky IV", "Drama", 10);
 
         movies = new ArrayList<Movie>();
-        movies.add(movie1);
+        movies.add(movie10);
         movies.add(movie2);
         movies.add(movie3);
-        movies.add(movie4);
+        movies.add(movie7);
         movies.add(movie5);
         movies.add(movie6);
-        movies.add(movie7);
+        movies.add(movie4);
         movies.add(movie8);
         movies.add(movie9);
-        movies.add(movie10);
+        movies.add(movie1);
         ranking = new Ranking(movies);
     }
 
     @Test
-    public void canListAllMoviesInRanking(){
+    public void canListAllMovies(){
+        ranking.sortList();
         ranking.listAllMovies();
     }
 
     @Test
     public void canGetMovieTitleByRank(){
-        assertEquals("Title: Point Break, Genre:  Action, Ranking: 1", ranking.getMovieByRank(1));
-
+        ranking.sortList();
+        assertEquals("Title: Point Break, Genre:  Action, Ranking: 1", ranking.getMovieDescriptionByRank(1));
     }
+
+    @Test
+    public void canReplaceLowestRankingMovie(){
+        ranking.sortList();
+        moviexx = new Movie("2001 A Space Odyssey","Sci Fi",10);
+        ranking.replaceLastMovie(moviexx);
+        assertEquals("2001 A Space Odyssey", ranking.getMovieTitleByRank(10));
+        ranking.listAllMovies();
+    }
+
+    @Test
+    public void canSortFavouritesByRank(){
+       ranking.sortList();
+        ranking.listAllMovies();
+    }
+
+
 
 
 }

@@ -2,7 +2,7 @@ package com.codeclan.filmrank_hw;
 
 import java.util.*;
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
 
     private String title;
     private String genre;
@@ -42,10 +42,20 @@ public class Movie {
 
 
     @Override
+    public int compareTo(Movie movie) {
+        int compareRank=((Movie)movie).getCurrentRanking();
+        return this.currentRanking - compareRank;
+
+    }
+
+    @Override
     public String toString(){
         return "Title: " + getTitle() + ", Genre:  " + getGenre() + ", Ranking: " + Integer.toString(getCurrentRanking());
 
     }
+
+
+
 }
 
 
