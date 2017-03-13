@@ -36,4 +36,15 @@ public class Ranking {
         Collections.sort(movies);
     }
 
+    public String findIndexByName(String name){
+        for(Movie m : movies){
+            if (name == m.getTitle()){
+                String info = "Index: " + movies.indexOf(m) + ", " + m.toString();
+                return info;
+            }
+        }
+        return "not found";
+    }
+
+
 }

@@ -74,7 +74,11 @@ public class RankingTest {
         ranking.listAllMovies();
     }
 
-
+    @Test
+    public void canFindIndexByName(){
+        String details = ranking.findIndexByName("Jaws II");
+        assertEquals("Index: 4, Title: Jaws II, Genre:  Thriller, Ranking: 5", details);
+    }
 
 
 }
