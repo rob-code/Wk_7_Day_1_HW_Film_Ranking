@@ -94,11 +94,11 @@ public class RankingTest {
     @Test
     public void canMoveTitleDownOnePlace(){
         ranking.sortList();
-        int details = ranking.findIndexByName("Jaws II");
-        assertEquals(4, details);
-        ranking.moveTitleDownRanking("Jaws II");
-        int details1 = ranking.findIndexByName("Jaws II");
-        assertEquals(5, details1);
+        int details = ranking.findIndexByName("Rocky II");
+        assertEquals(7, details);
+        ranking.moveTitleDownRanking("Rocky II");
+        int details1 = ranking.findIndexByName("Rocky II");
+        assertEquals(8, details1);
     }
 
 
