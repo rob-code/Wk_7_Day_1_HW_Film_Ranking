@@ -52,7 +52,11 @@ public class RankingTest {
         ranking.listAllMovies();
     }
 
+    @Test
+    public void canGetMovieTitleByRank(){
+        assertEquals("Title: Point Break, Genre:  Action, Ranking: 1", ranking.getMovieByRank(1));
 
+    }
 
 
 }
